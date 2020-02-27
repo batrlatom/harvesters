@@ -2399,8 +2399,14 @@ def _save_file(*, file_dir=None, file_name=None, binary_data=None):
             prefix=datetime.now().strftime('%Y%m%d%H%M%S_'),
         )
 
-    #
+    import sys
+    os_system = sys.platform
+    if os_system in ['win32']:
+        file_name = "." + file_name
+
+
     file_path = os.path.join(file_dir, file_name)
+
 
     #
     mode = 'w+'
